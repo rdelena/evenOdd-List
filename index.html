@@ -5,6 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Even-Odd List</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body></body>
+  <body>
+    <h1>Even Odd Lists</h1>
+    <hr />
+    <form id="even-odd-form" autocomplete="off" target="_blank">
+      <div>
+        <label for="word">List Generator:</label>
+        <input
+          type="text"
+          name="word"
+          id="word"
+          placeholder="What's your word?"
+          onkeyup="updateWord(this)"
+        />
+      </div>
+      <br />
+      <div>
+        <input
+          class="button"
+          type="button"
+          value="Even or Odd?"
+          onclick="handleSubmit()"
+        />
+      </div>
+    </form>
+    <div class="container">
+      <section class="even-box">
+        <h2>Even</h2>
+        <ul id="even"></ul>
+      </section>
+      <section class="odd-box">
+        <h2>Odd</h2>
+        <ul id="odd"></ul>
+      </section>
+    </div>
+    <script>
+      let usersWord = "";
+      let oddList = document.getElementById("odd");
+      let evenList = document.getElementById("even");
+
+      function updateWord(element) {
+        usersWord = element.value;
+
+        console.log(usersWord);
+      }
+
+      function handleSubmit() {
+        // this line creates a new LI Element. We'll do this every time a word is submitted so this should stay the same
+        let newListItem = document.createElement("LI");
+
+        // this line sticks the user's word into the newly create LI Element so we'll keep this the same, as well.
+        newListItem.innerText = usersWord;
+
+        if (usersWord.length % 2 === 0) {
+          /*put word in even lists*/
+          evenList.appendChild(newListItem);
+        } else {
+          /*put word in odd list*/
+          oddList.appendChild(newListItem);
+        }
+        // these two lines will be the same
+        usersWord = "";
+        document.getElementById("even-odd-form").reset();
+      }
+    </script>
+  </body>
 </html>
