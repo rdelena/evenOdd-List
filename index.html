@@ -10,7 +10,7 @@
   <body>
     <h1>Even Odd Lists</h1>
     <hr />
-    <form id="even-odd-form" autocomplete="off" target="_blank">
+    <form id="even-odd-form" autocomplete="off">
       <div>
         <label for="word">List Generator:</label>
         <input
@@ -23,12 +23,15 @@
       </div>
       <br />
       <div>
-        <input
+        <!-- changed type to submit  original code: <input
           class="button"
-          type="button"
+          type="submit"
           value="Even or Odd?"
           onclick="handleSubmit()"
-        />
+        />-->
+        <button class="button" type="submit" onclick="handleSubmit()">
+          Even or Odd
+        </button>
       </div>
     </form>
     <br />
@@ -54,6 +57,8 @@
       }
 
       function handleSubmit() {
+        // stops the page from reloading
+        event.preventDefault();
         // this line creates a new LI Element. We'll do this every time a word is submitted so this should stay the same
         let newListItem = document.createElement("LI");
 
